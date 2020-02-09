@@ -1,0 +1,90 @@
+@import '../../../Common/Utils/Styles/mixin.scss';
+@import '../../../Common/Utils/Styles/colors.scss';
+
+.spon-sidebar {
+  width: calc(20rem - 1px);
+  height: 100%;
+  border-right: 1px solid $inactive;
+  padding: 0 rc(15) 0 rc(5);
+
+  &__select {
+    margin-top: rc(15);
+
+    &__From{
+      margin-top: rc(15);
+    }
+    &__To{
+      margin-top: rc(15);
+    }
+    &__Carrier{
+      margin-top: rc(15);
+    }
+  }
+
+  h4 {
+    margin: 0;
+    padding-bottom: rc(15);
+    font-size: rc(14);
+    font-weight: 600;
+    color: $inactive;
+  }
+
+  &__input{
+      width: 80%;
+      margin-left: 15px
+    
+  }
+
+  input {
+    margin: 15px
+  }
+
+  &__filters {
+    padding: rc(20) rc(20) 0 rc(20);
+  }
+
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    &--first {
+      margin-bottom: rc(20);
+    }
+  }
+
+  &__button {
+    width: calc(50% - 10px);
+    height: rc(40);
+    padding: 0;
+    background: rgba(194, 202, 216, 0.14);
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    &:hover:disabled {
+      background: rgba(194, 202, 216, 0.14);
+    }
+
+    &--selected {
+      background: $violet !important;
+      color: $white !important;
+    }
+
+    span {
+      font-size: rc(11);
+    }
+  }
+
+  .spon-multiswitch__items {
+    width: 100%;
+    margin-top: rc(20);
+    padding: 0 0 rc(30) 0;
+    height: 40vh;
+    overflow: auto;
+  }
+
+  
+  
+}

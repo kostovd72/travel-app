@@ -1,0 +1,423 @@
+@import '../../../Common/Utils/Styles/mixin.scss';
+@import '../../../Common/Utils/Styles/colors.scss';
+
+.search {
+  display: flex;
+  margin-bottom: 5rem;
+  @include respond(mobile) {
+    flex-direction: column;
+    width: 90%;
+    box-shadow: none;
+  }
+
+  &-input {
+    height: 4.2rem;
+    width: 30rem;
+    padding: 0 1.5rem;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+    border-right: 1px solid $border;
+
+    @include respond(tab) {
+      height: 6rem;
+    }
+
+    @include respond(mobile) {
+      width: 100%;
+      margin-bottom: 1rem;
+      box-shadow: 0 9px 31px 0 $shadow;
+      border-radius: 3px;
+    }
+    label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: $label;
+
+      @include respond(tab) {
+        font-size: 0.9rem;
+      }
+      &.dirty {
+        position: relative;
+      }
+    }
+    input {
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $input;
+      background-color: transparent;
+      z-index: 2;
+      text-transform: capitalize;
+      width: 100%;
+
+      @include respond(tab) {
+        font-size: 1.4rem;
+      }
+      
+      &::placeholder {
+        text-transform: none;
+        color: 	#909090;
+      }
+
+      &:focus ~ label {
+        position: relative;
+      }
+    }
+  }
+
+  &-select {
+    background-color: $white;
+    position: relative;
+    height: 4.2rem;
+    width: 14rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(tab) {
+      height: 6rem;
+      width: 20rem;
+    }
+
+    @include respond(mobile) {
+      width: 100%;
+      justify-content: flex-start;
+      margin-bottom: 1rem;
+      box-shadow: 0 9px 31px 0 $shadow;
+      border-radius: 3px;
+
+      &.buttons {
+        margin-bottom: 5rem;
+      }
+    }
+    span {
+      margin: 0 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $input;
+      width: 100%;
+      text-align: center;
+
+      @include respond(tab) {
+        font-size: 1.4rem;
+      }
+
+      @include respond(mobile) {
+        width: auto;
+      }
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+      padding: 0.1rem;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:last-of-type {
+        @include respond(mobile) {
+          margin-left: auto;
+        }
+      }
+    }
+
+    div {
+      height: 3rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      bottom: -3.0rem;
+      @include respond(mobile) {
+        height: 4rem;
+        bottom: -4rem;
+        left: 0;
+      }
+      
+      button {
+        width: 100%;
+        background-color: $white;
+        border-color: $border;
+        outline: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $input;
+        border: 0;
+        @include respond(mobile) {
+          font-size: 2rem;
+          font-weight: 300;
+          &:first-of-type {
+            border-bottom-left-radius: 3px;
+          }
+          &:last-of-type {
+            border-bottom-right-radius: 3px;
+
+          }
+        }
+      }
+      
+      li {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        background: $white;
+
+        &:last-of-type {
+          Button {
+            &:first-of-type {
+              padding-right: 10px;
+              width: 90%;
+            }
+          }
+        }
+        
+        label {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+
+ 
+  &__list-item {
+    padding: 0 rc(10);
+    min-height: rc(40);
+    display: flex;
+    align-items: center;
+    font-size: rc(14);
+    cursor: pointer;
+
+    &:not(:first-child) {
+      border-top: 1px solid $gray;
+    }
+    &:hover {
+      background: $gray;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 65.5%;
+    left: 26%;
+    display: none;
+    flex-direction: column;
+    background: $white;
+    box-sizing: border-box;
+    width: 30rem;
+    max-height: rc(200);
+    z-index: 600;
+    transform: translateX(-1px);
+    border: 1px solid $gray;
+    transition: all 300ms;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: rc(4);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      border-radius: rc(5);
+      outline: 1px solid slategrey;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    &--active {
+      display: flex;
+      border-bottom: 1px solid $main-blue;
+      border-right: 1px solid $main-blue;
+      border-left: 1px solid $main-blue;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+
+  &-button {
+    background-color: $blue-light;
+    border: 0;
+    outline: none;
+    height: 4.2rem;
+    width: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+    @include respond(tab) {
+      height: 6rem;
+      width: 5rem;
+    }
+    @include respond(mobile) {
+      width: 100%;
+      z-index: 1;
+      box-shadow: 0 9px 31px 0 $shadow;
+      border-radius: 3px;
+    }
+    div {
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $blue;
+      @include respond(mobile) {
+        margin: 0 auto;
+        height: 3.5rem;
+        width: 3.5rem;
+      }
+      img {
+        margin-left: 2px;
+      }
+    }
+  }
+}
+
+.search-dropdown {
+  &__element {
+    border:none;
+    &--active {
+      position: relative;
+      width: 100%;
+      height: rc(50);
+      border: solid 1px $gray;
+      border-radius: 3px;
+      cursor: pointer;
+      border-color: $violet-light;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &__label {
+    margin-top: 0;
+    margin-bottom: rc(7);
+    font-size: rc(12);
+    color: $label;
+
+    &::after {
+      content: "*";
+      color: red;
+      position: absolute;
+      left: auto;
+    }
+  }
+
+  &__placeholder {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 rc(10) 0 rc(10);
+    color: $dark-blue;
+    font-size: rc(14);
+
+    & p {
+      margin: 0 !important;
+      font-size: rc(14);
+    }
+  }
+
+  &__placeholder-icon {
+    width: rc(9);
+    fill: $gray;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    background: $white;
+    box-sizing: border-box;
+    width: calc(100% + 2px);
+    max-height: rc(200);
+    z-index: 600;
+    transform: translateX(-1px);
+    border: 1px solid $gray;
+    transition: all 300ms;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: rc(4);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      border-radius: rc(5);
+      outline: 1px solid slategrey;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    &--active {
+      display: flex;
+      border-bottom: 1px solid $main-blue;
+      border-right: 1px solid $main-blue;
+      border-left: 1px solid $main-blue;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+
+  &__list-item {
+    padding: 0 rc(10);
+    min-height: rc(40);
+    display: flex;
+    align-items: center;
+    font-size: rc(14);
+    cursor: pointer;
+
+    &:not(:first-child) {
+      border-top: 1px solid $gray;
+    }
+    &:hover {
+      background: $gray;
+    }
+  }
+
+  &__input {
+    text-transform: capitalize;
+    position: relative;
+    width: 100%;
+    height: rc(22);
+    border: none;
+    border-radius: 3px;
+
+    
+    &:focus {
+      outline: none;
+    }
+
+  }
+}
+
+
